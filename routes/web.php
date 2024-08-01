@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/home');
 });
 
 Route::group([ 'middleware' => ['auth'] ], function () {
@@ -28,8 +28,6 @@ Route::group([ 'middleware' => ['auth'] ], function () {
     Route::get('/tasks/edit/{task}', [App\Http\Controllers\TaskController::class, 'edit'])->name('tasks.edit');
     Route::get('/tasks/show/{task}', [App\Http\Controllers\TaskController::class, 'show'])->name('tasks.show');
     Route::delete('/tasks/destroy/{task}', [App\Http\Controllers\TaskController::class, 'destroy'])->name('tasks.destroy');
-
-
 
 });
 
