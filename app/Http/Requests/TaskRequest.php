@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class TaskRequest extends FormRequest
 {
@@ -24,10 +25,18 @@ class TaskRequest extends FormRequest
     public function rules()
     {
         return [
+            'user_id' => 'required|int',
             'title'  => 'required|string',
             'description' => 'required|string',
             'status'   => 'required|int',
         ];
+    }
+
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'user_id' => Auth::id(),
+        ]);
     }
 }
 

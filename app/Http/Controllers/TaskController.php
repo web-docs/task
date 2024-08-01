@@ -5,27 +5,29 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TaskRequest;
 use App\Models\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
 
     public function index()
     {
-        $tasks = Task::where(['user_id'=>auth()->id])->paginate(Task::TASKS_PER_PAGE);
-        return view('profile.tasks.index',compact($tasks));
+        $tasks = Task::where(['user_id'=>Auth::id()])->paginate(Task::TASKS_PER_PAGE);
+        return view('profile.tasks.index',compact('tasks'));
     }
 
     public function create()
     {
-        return view('profile.tasks.form');
+        return view('profile.tasks.create');
     }
 
 
     public function store(TaskRequest $request)
     {
+
         Task::create($request->validated());
 
-        return redirect()->route('profile.tasks.index', app()->getLocale())->with('status', 'Operation successfull completed!');
+        return redirect()->route('tasks.index', app()->getLocale())->with('status', 'Operation successfull completed!');
     }
 
     public function show(Task $task)
@@ -36,22 +38,22 @@ class TaskController extends Controller
 
     public function edit(Task $task)
     {
-        return view('profile.tasks.form', compact('task'));
+        return view('profile.tasks.edit', compact('task'));
     }
 
-    public function update(Request $request, Task $task)
+    public function update(TaskRequest $request, Task $task)
     {
-        $params = $request->all();
-        $task->update($params['task']);
 
-        return redirect()->route('profile.tasks.index', app()->getLocale())->with('success', 'Operation successfull completed!');;
+        $task->update($request->validated());
+
+        return redirect()->route('tasks.index', app()->getLocale())->with('success', 'Operation successfull completed!');;
 
     }
 
     public function destroy(Task $task)
     {
         $task->delete();
-        return redirect()->route('profile.tasks.index', app()->getLocale())->with('success', 'Operation successfull completed!');
+        return redirect()->route('tasks.index', app()->getLocale())->with('success', 'Operation successfull completed!');
 
     }
 

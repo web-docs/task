@@ -15,11 +15,13 @@ class Task extends Model
     const STATUS_IN_PROCESS = 1;
     const STATUS_COMPLETED = 2;
 
+    protected $guarded = [];
 
     protected $fillable = [
         'title',
         'description',
         'status',
+        'user_id',
     ];
 
     public function user(){
@@ -40,7 +42,7 @@ class Task extends Model
         return __('main.unknown');
     }
 
-    public function getStatusesList(){
+    public static function getStatusesList(){
 
         return [
             0=> __('main.status_created'),

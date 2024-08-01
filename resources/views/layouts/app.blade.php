@@ -79,5 +79,9 @@
             @yield('content')
         </main>
     </div>
+
+<script src="{{ asset('profile/assets/js/jquery-3.6.0.min.js') }}"></script>
+
+@yield('js')
 </body>
 </html>

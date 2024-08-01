@@ -14,38 +14,36 @@
                         </div>
                     @endif
 
-                        <form action="{{route('profile.tasks.store',$task)}}" method="POST">
+                        <form action="{{route('tasks.store')}}" method="POST">
                             @csrf
-
                         <div class="row">
 
                             <div class="col-12">
                                 <label class="form-label">{{__('main.title')}}</label>
-                                <input type="text" name="title" class="form-control" value="{{old('title',isset($task) ? $task->title :'')}}" required>
+                                <input type="text" name="title" class="form-control" value="{{old('title')}}" required>
                                 @error('title')
                                 <small class="invalid-feedback"> {{ $message }} </small>
                                 @enderror
                             </div>
                             <div class="col-12">
                                 <label class="form-label">{{__('main.description')}}</label>
-                                <textarea name="description" class="form-control" value="{{old('description',isset($task) ? $task->description :'')}}" required>
+                                <textarea name="description" class="form-control" required>{{old('description')}}</textarea>
                                 @error('description')
                                 <small class="invalid-feedback"> {{ $message }} </small>
                                 @enderror
                             </div>
                             <div class="col-12">
                                 <label class="form-label">{{__('main.status')}}</label>
-                                <select class="form-control" name="description" required>
-                                    @isset($task)
-                                        <option value="0">{{__('main.choice_task')}}</option>
-                                        @foreach($task->getStatusesList() as $status_id => $status)
-                                            <option value="{{$status->id}}">{{$status)}}</option>
-                                        @endforeach
-                                    @endisset
+                                <select class="form-control" name="status" required>
+                                    <option value>{{__('main.choice_task')}}</option>
+                                    @foreach(\App\Models\Task::getStatusesList() as $status_id => $status)
+                                        <option value="{{$status_id}}">{{$status}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
 
+                            <button type="submit">{{__('main.save')}}</button>
                         </form>
 
                 </div>

@@ -14,7 +14,19 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+
+                        <div class="row">
+                            <div class="col-md-2">
+
+                                @include('elements.sidebar')
+
+                            </div>
+                            <div class="col-md-10">
+                                {{ __('You are logged in!') }}
+                            </div>
+
+                        </div>
+
                 </div>
             </div>
         </div>
