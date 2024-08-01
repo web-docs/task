@@ -28,6 +28,8 @@
                                 <textarea class="form-control" readonly>{{$task->description}}</textarea>
                             </div>
 
+                        </div>
+                        <div style="padding-top: 10px">
                             <a href="{{URL::previous()}}">{{__('main.back')}}</a>
                         </div>
 

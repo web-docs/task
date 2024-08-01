@@ -44,9 +44,13 @@
                             </div>
                         </div>
 
-                            <button type="submit">{{__('main.save')}}</button>
+                            <button type="submit" style="margin-top: 15px">{{__('main.save')}}</button>
                         </form>
 
+                </div>
+
+                <div style="padding: 0 0 20px 20px">
+                    <a href="{{URL::previous()}}">{{__('main.back')}}</a>
                 </div>
             </div>
         </div>
