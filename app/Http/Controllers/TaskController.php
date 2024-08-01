@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\TaskRequest;
 use App\Models\Task;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
@@ -32,17 +31,22 @@ class TaskController extends Controller
 
     public function show(Task $task)
     {
+        $this->authorize('show',$task);
+
         return view('profile.tasks.show', compact('task'));
     }
 
 
     public function edit(Task $task)
     {
+        $this->authorize('edit',$task);
+
         return view('profile.tasks.edit', compact('task'));
     }
 
     public function update(TaskRequest $request, Task $task)
     {
+        $this->authorize('update',$task);
 
         $task->update($request->validated());
 
@@ -52,7 +56,10 @@ class TaskController extends Controller
 
     public function destroy(Task $task)
     {
+        $this->authorize('destroy',$task);
+
         $task->delete();
+
         return redirect()->route('tasks.index', app()->getLocale())->with('success', __('main.operation_success'));
 
     }
