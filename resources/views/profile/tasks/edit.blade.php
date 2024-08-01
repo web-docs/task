@@ -29,7 +29,7 @@
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">{{__('main.description')}}</label>
-                                    <textarea name="description" class="form-control" required>{{old('description',isset($task) ? $task->description :'')}}</textarea>
+                                    <textarea name="description" class="form-control" rows="10" required>{{old('description',isset($task) ? $task->description :'')}}</textarea>
                                 @error('description')
                                 <small class="invalid-feedback"> {{ $message }} </small>
                                     @enderror
@@ -38,7 +38,7 @@
                                     <label class="form-label">{{__('main.status')}}</label>
                                     <select class="form-control" name="status" required>
                                         @isset($task)
-                                            <option value>{{__('main.choice_task')}}</option>
+                                            <option value>{{__('main.choice_task_status')}}</option>
                                             @foreach(\App\Models\Task::getStatusesList() as $status_id => $status)
                                                 <option value="{{$status_id}}" @if($task->status==$status_id) selected @endif >{{$status}}</option>
                                             @endforeach

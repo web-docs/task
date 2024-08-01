@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Preview task') }}</div>
+                <div class="card-header">{{ __('main.preview_task') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -15,20 +15,20 @@
                     @endif
 
 
-                        <div class="grid grid-cols-1 gap-6 2xl:grid-cols-2">
-                            <div class="flex flex-col gap-2">
-                                <label for="" class="text-base font-medium text-bgray-600 dark:text-bgray-50">{{__('main.status')}}</label>: {{$task->getStatusLabel()}}
+                        <div class="cols-12">
+                            <div class="">
+                                <label >{{__('main.status')}}</label>: <div class="form-control">{{$task->getStatusLabel()}}</div>
                             </div>
-                            <div class="flex flex-col gap-2">
-                                <label for="" class="text-base font-medium text-bgray-600 dark:text-bgray-50">{{__('main.title')}}</label>
-                                <div>{{$task->title}}</div>
+                            <div class="">
+                                <label >{{__('main.title')}}</label>
+                                <input type="text" class="form-control" readonly value="{{$task->title}}">
                             </div>
-                            <div class="flex flex-col gap-2">
-                                <label for="" class="text-base font-medium text-bgray-600 dark:text-bgray-50">{{__('main.description')}}</label>
-                                <div>{{$task->description}}</div>
+                            <div class="">
+                                <label>{{__('main.description')}}</label>
+                                <textarea class="form-control" readonly>{{$task->description}}</textarea>
                             </div>
 
-
+                            <a href="{{URL::previous()}}">{{__('main.back')}}</a>
                         </div>
 
                 </div>

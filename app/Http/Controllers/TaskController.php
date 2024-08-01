@@ -27,7 +27,7 @@ class TaskController extends Controller
 
         Task::create($request->validated());
 
-        return redirect()->route('tasks.index', app()->getLocale())->with('status', 'Operation successfull completed!');
+        return redirect()->route('tasks.index', app()->getLocale())->with('status', __('main.operation_success'));
     }
 
     public function show(Task $task)
@@ -46,14 +46,14 @@ class TaskController extends Controller
 
         $task->update($request->validated());
 
-        return redirect()->route('tasks.index', app()->getLocale())->with('success', 'Operation successfull completed!');;
+        return redirect()->route('tasks.index', app()->getLocale())->with('success', __('main.operation_success'));;
 
     }
 
     public function destroy(Task $task)
     {
         $task->delete();
-        return redirect()->route('tasks.index', app()->getLocale())->with('success', 'Operation successfull completed!');
+        return redirect()->route('tasks.index', app()->getLocale())->with('success', __('main.operation_success'));
 
     }
 

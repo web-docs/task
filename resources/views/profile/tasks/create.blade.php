@@ -6,7 +6,7 @@
 
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('main.preview_task') }}</div>
+                <div class="card-header">{{ __('main.create_task') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -36,7 +36,7 @@
                             <div class="col-12">
                                 <label class="form-label">{{__('main.status')}}</label>
                                 <select class="form-control" name="status" required>
-                                    <option value>{{__('main.choice_task')}}</option>
+                                    <option value>{{__('main.choice_task_status')}}</option>
                                     @foreach(\App\Models\Task::getStatusesList() as $status_id => $status)
                                         <option value="{{$status_id}}">{{$status}}</option>
                                     @endforeach

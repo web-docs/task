@@ -10,7 +10,7 @@
         </div>
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Tasks') }}</div>
+                <div class="card-header">{{ __('main.tasks') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -38,6 +38,7 @@
                                     <td>{{$task->id}}</td>
                                     <td>{{$task->title}}</td>
                                     <td>{{$task->getStatusLabel()}}</td>
+                                    <td><a href="{{route('tasks.show', $task) }}"><button>{{__('main.show')}}</button></a></td>
                                     <td><a href="{{route('tasks.edit', $task) }}"><button>{{__('main.edit')}}</button></a></td>
                                     <td>
                                         <form class="form-destroy" action="{{route('tasks.destroy', $task) }}" method="POST">
