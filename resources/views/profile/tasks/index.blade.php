@@ -24,7 +24,7 @@
 
                         <div class="col-md-10">
 
-
+                            @if(!empty($tasks))
                         <table class="table table-responsive">
                             <tr>
                                 <th>ID</th>
@@ -32,7 +32,7 @@
                                 <th>{{__('main.status')}}</th>
                                 <th colspan="2"></th>
                             </tr>
-                            @if(!empty($tasks))
+
                                 @foreach($tasks as $task)
                                 <tr>
                                     <td>{{$task->id}}</td>
@@ -49,8 +49,12 @@
                                     </td>
                                 </tr>
                                 @endforeach
-                            @endif
+
                         </table>
+
+                                {{ $tasks->onEachSide(3)->withQueryString()->links('') }}
+
+                            @endif
                         </div>
                     </div>
 
