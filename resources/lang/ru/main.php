@@ -23,10 +23,12 @@ return [
     'logout' => 'Выйти',
     'home' => 'Главная',
     'confirm_delete' => 'Подтвердите удаление',
-    'operation_success' => 'Операция успешно завершена',
+    'operation_success' => 'Операция успешно завершена!',
     'back' => 'Назад',
     'profile' => 'Профиль',
-    'create_tasks' => 'Создавайте задачи',
+    'create_tasks' => 'Создавайте задачи!',
+    'forgot_password' => 'Восстановить пароль?',
+    'remember_me' => 'Запомнить меня',
 
 
 

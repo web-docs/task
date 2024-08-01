@@ -43,7 +43,7 @@
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('main.login') }}</a>
                             @endif
 
                             @if (Route::has('register'))
